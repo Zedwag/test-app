@@ -1,0 +1,92 @@
+body {
+	font-family: Georgia, serif;
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+	font-size: 1.4vw;
+  border: 1px solid #88A4FF;
+}
+
+.table tr:nth-child(even) {
+  background: #D0E4F5;
+}
+
+.column {
+	font-weight: lighter;
+	width: 100%;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border:1px solid #29668f;
+	display:inline-table;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 1.4vw;
+	text-shadow:0px 1px 0px #3d768a;
+}
+
+.column:hover {
+  background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+
+.column.active {
+  font-weight: bold;
+}
+
+.column img {
+	height: 0.8vw;
+}
+
+.filter {
+	display: inline-flex;
+	font-size: 28px;
+}
+
+.filter button {
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border:1px solid #29668f;
+	border-radius:5px;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.filter button:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+
+.filter button:active {
+	position:relative;
+	top:1px;
+}
+
+.filter input {
+	background-color: #dfe9ec;
+	margin-left: 0.3rem;
+	margin-right: 0.3rem;
+}
+
+.left input {
+	width: 30px;
+} 
+
+.h2 {
+	padding-top: 1000px;
+}
+
+ul {
+	list-style: none;
+}

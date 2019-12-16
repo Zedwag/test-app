@@ -1,0 +1,84 @@
+<div>
+  <H1>Таблица публикаций пользователей</H1>
+
+  <div class="filter">
+    <div class=left>
+      <span>Длина названия публикации: от<input type="number" value="0" #min></span>
+      <span>до<input type="number" value="80" #max></span>
+      <button (click)="makePostsList()">Применить фильтр</button>
+    </div>
+
+    <span class="right">Поиск в названии и содержании:<input placeholder="Введите текст для поиска" #input
+        (input)='makePostsList()' /></span>
+  </div>
+
+  <h2></h2>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>
+          <button class="column" [class.active]="sortBy===0" (click)="sortByUsername()">
+            Имя пользователя
+            <img *ngIf="sortBy===0 && !reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig03.png' />
+            <img *ngIf="sortBy===0 && reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig04.png' />
+          </button>
+        </th>
+        <!--
+        <th>
+          <button class="column" [class.active]="sortBy===1" [class.bot_arrow]="sortBy===1 && reverse"
+            [class.top_arrow]="sortBy===1 && !reverse" (click)="sortByCity()">
+            <img class='bot_arrow' src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig04.png' />
+            Название города
+            <i *ngIf="sortBy===1 && !reverse" class="arrow up"></i>
+            <i *ngIf="sortBy===1 && reverse" class="arrow down"></i>
+            <input type='image' class='top_arrow'
+              src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig03.png' />
+          </button>
+        </th>
+        -->
+        <th>
+          <button class="column" [class.active]="sortBy===1" (click)="sortByCity()">
+            Название города 
+            <!--<i *ngIf="sortBy===1 && !reverse" class="arrow up"></i>
+            <i *ngIf="sortBy===1 && reverse" class="arrow down"></i>-->
+            <img *ngIf="sortBy===1 && !reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig03.png' />
+            <img *ngIf="sortBy===1 && reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig04.png' />
+          </button>
+        </th>
+        <th>
+          <button class="column" [class.active]="sortBy===2" (click)="sortByTitle()">
+            Название публикации
+            <img *ngIf="sortBy===2 && !reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig03.png' />
+            <img *ngIf="sortBy===2 && reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig04.png' />
+          </button>
+        </th>
+        <th>
+          <button class="column" [class.active]="sortBy===3" (click)="sortByCommentsAmount()">
+            Количество комментариев
+            <img *ngIf="sortBy===3 && !reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig03.png' />
+            <img *ngIf="sortBy===3 && reverse" src='http://s1.iconbird.com/ico/0912/IconBeastLite/w30h301347459086arrowbig04.png' />
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of visiblePosts; let i = index" (click)="setPostForModal(i); openModal('modal')">
+        <td>{{ post.username }}</td>
+        <td>{{ post.city }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.commentsAmount }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <jw-modal id="modal">
+    <div *ngIf="postForModal">
+      {{postForModal.body}}
+      <ul *ngFor="let comment of postForModal.comments">
+        <li>{{comment.email}}: {{comment.body}}</li>
+      </ul>
+    </div>
+    
+    <button (click)="closeModal('modal');">Закрыть</button>
+  </jw-modal>
+</div>
